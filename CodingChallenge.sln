@@ -5,10 +5,13 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingChallenge.FamilyTree", "CodingChallenge.FamilyTree\CodingChallenge.FamilyTree.csproj", "{F43D3813-4615-48F4-95D4-44CE7C49B40F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingChallenge.FamilyTree.Tests", "CodingChallenge.FamilyTree.Tests\CodingChallenge.FamilyTree.Tests.csproj", "{595D7E79-10C8-449E-9A44-0C158F944CC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingChallenge.PirateSpeak", "CodingChallenge.PirateSpeak\CodingChallenge.PirateSpeak.csproj", "{467D3021-CBF9-4383-8886-72520FC0F274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingChallenge.PirateSpeak.Tests", "CodingChallenge.PirateSpeak.Tests\CodingChallenge.PirateSpeak.Tests.csproj", "{F016CA98-6DCE-4EAE-A70E-2A1F4583AA16}"
+EndProject
 Global
-	GlobalSection(CodealikeProperties) = postSolution
-		SolutionGuid = 7f6b9859-32a0-480c-89e4-5472cf1d0ad1
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -18,8 +21,23 @@ Global
 		{F43D3813-4615-48F4-95D4-44CE7C49B40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F43D3813-4615-48F4-95D4-44CE7C49B40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F43D3813-4615-48F4-95D4-44CE7C49B40F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595D7E79-10C8-449E-9A44-0C158F944CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595D7E79-10C8-449E-9A44-0C158F944CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595D7E79-10C8-449E-9A44-0C158F944CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595D7E79-10C8-449E-9A44-0C158F944CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467D3021-CBF9-4383-8886-72520FC0F274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467D3021-CBF9-4383-8886-72520FC0F274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467D3021-CBF9-4383-8886-72520FC0F274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467D3021-CBF9-4383-8886-72520FC0F274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F016CA98-6DCE-4EAE-A70E-2A1F4583AA16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F016CA98-6DCE-4EAE-A70E-2A1F4583AA16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F016CA98-6DCE-4EAE-A70E-2A1F4583AA16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F016CA98-6DCE-4EAE-A70E-2A1F4583AA16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 7f6b9859-32a0-480c-89e4-5472cf1d0ad1
 	EndGlobalSection
 EndGlobal
