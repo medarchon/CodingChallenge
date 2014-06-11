@@ -10,7 +10,7 @@ namespace CodingChallenge.FamilyTree.Tests
 
         given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
 
-        when searching_the_tree_for_joes_birthday = () => _result = Solution.GetBirthMonth(_tree, "Joe");
+        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Joe");
 
         [then]
         public void the_result_should_be_january()
@@ -26,7 +26,7 @@ namespace CodingChallenge.FamilyTree.Tests
 
         given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
 
-        when searching_the_tree_for_joes_birthday = () => _result = Solution.GetBirthMonth(_tree, "Ted");
+        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Ted");
 
         [then]
         public void the_result_should_be_may()
@@ -42,12 +42,12 @@ namespace CodingChallenge.FamilyTree.Tests
 
         given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
 
-        when searching_the_tree_for_joes_birthday = () => _result = Solution.GetBirthMonth(_tree, "Jeebus");
+        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Jeebus");
 
         [then]
         public void the_result_should_be_may()
         {
-            _result.ShouldEqual("No descendant found.");
+            _result.ShouldEqual("");
         }
     }
 }

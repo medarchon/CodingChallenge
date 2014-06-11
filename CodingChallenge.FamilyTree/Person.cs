@@ -19,7 +19,6 @@ namespace CodingChallenge.FamilyTree
     {
         public static Person Make()
         {
-            var dateTime = DateTime.Parse("5/5/2010");
             return new Person
             {
                 Name = "Ted",
@@ -49,12 +48,4 @@ namespace CodingChallenge.FamilyTree
             };
         }
     }
-
-public static class Solution
-{
-    public static string GetBirthMonth(Person person, string descendantName)
-    {
-        throw new NotImplementedException();
-    }
-}
 }
