@@ -45,7 +45,7 @@ namespace CodingChallenge.FamilyTree.Tests
         when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Jeebus");
 
         [then]
-        public void the_result_should_be_may()
+        public void the_result_should_be_empty()
         {
             _result.ShouldEqual("");
         }
