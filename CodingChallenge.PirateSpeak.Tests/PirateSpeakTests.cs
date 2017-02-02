@@ -1,19 +1,22 @@
-﻿using NUnit.Framework;
+﻿using Given.Common;
+using Xunit;
 
 namespace CodingChallenge.PirateSpeak.Tests
 {
-    [TestFixture]
     public class PirateSpeakTests
     {
 
-        [TestCase("trisf", new []{"first"}, Result = new[] {"first"})]
-        [TestCase("oob", new[] {"bob", "baobob"}, Result = new string[0])]
-        [TestCase("ainstuomn", new[] { "mountains", "hills", "mesa" }, Result = new[] { "mountains" })]
-        [TestCase("oopl", new[] { "donkey", "pool", "horse", "loop" }, Result = new[] { "pool", "loop" })]
-        [TestCase("oprst", new[] {"sport", "ports", "ball", "bat", "port"}, Result = new[] {"sport", "ports"})]
-        public string[] TestPirateVocabulary(string jumble, string[] dictionary)
+        [Theory] 
+        [InlineData("trisf", new []{"first"}, new[] {"first"})]
+        [InlineData("oob", new[] {"bob", "baobob"},new string[0])]
+        [InlineData("ainstuomn", new[] { "mountains", "hills", "mesa" }, new[] { "mountains" })]
+        [InlineData("oopl", new[] { "donkey", "pool", "horse", "loop" }, new[] { "pool", "loop" })]
+        [InlineData("oprst", new[] {"sport", "ports", "ball", "bat", "port"}, new[] {"sport", "ports"})]
+        public void TestPirateVocabulary(string jumble, string[] dictionary, object expectedResult)
         {
-            return new Solution().GetPossibleWords(jumble, dictionary);
+            var actualResult = new Solution().GetPossibleWords(jumble, dictionary);
+            actualResult.ShouldBeTheSameAs(expectedResult);
         }
     }
 }
+

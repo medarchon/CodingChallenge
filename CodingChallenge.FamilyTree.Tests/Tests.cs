@@ -1,53 +1,34 @@
 ﻿using Given.Common;
-using Given.NUnit;
+using Xunit;
 
 namespace CodingChallenge.FamilyTree.Tests
 {
-    public class person_exists_in_tree : Scenario
+    
+    public class TreeTests
     {
-        static Person _tree;
-        static string _result;
-
-        given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
-
-        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Joe");
-
-        [then]
-        public void the_result_should_be_january()
+        
+        [Theory]
+        public void if_the_person_exists_in_tree_the_result_should_be_january()
         {
-            _result.ShouldEqual("January");
+            var tree = FamilyTreeGenerator.Make();
+            var result = new Solution().GetBirthMonth(tree, "Joe");
+            result.ShouldEqual("January");
         }
-    }
-
-    public class person_exists_at_the_top_tree : Scenario
-    {
-        static Person _tree;
-        static string _result;
-
-        given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
-
-        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Ted");
-
-        [then]
-        public void the_result_should_be_may()
+           
+        [Theory]
+        public void if__the_person_exists_at_the_top_tree_the_result_should_be_may()
         {
-            _result.ShouldEqual("May");
+            var tree = FamilyTreeGenerator.Make();
+            var result = new Solution().GetBirthMonth(tree, "Ted");
+            result.ShouldEqual("May");
         }
-    }
 
-    public class person_does_not_exist_in_the_tree : Scenario
-    {
-        static Person _tree;
-        static string _result;
-
-        given a_family_tree = () => _tree = FamilyTreeGenerator.Make();
-
-        when searching_the_tree_for_joes_birthday = () => _result = new Solution().GetBirthMonth(_tree, "Jeebus");
-
-        [then]
-        public void the_result_should_be_empty()
+        [Theory]
+        public void if_the_person_does_not_exist_in_the_tree_the_result_should_be_empty()
         {
-            _result.ShouldEqual("");
+            var tree = FamilyTreeGenerator.Make();
+            var result = new Solution().GetBirthMonth(tree, "Jeebus");
+            result.ShouldEqual("");
         }
     }
 }
