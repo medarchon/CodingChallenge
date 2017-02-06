@@ -11,8 +11,9 @@ namespace CodingChallenge.FamilyTree.Tests
         public void if_the_person_exists_in_tree_the_result_should_be_january()
         {
             var tree = FamilyTreeGenerator.Make();
-            var result = new Solution().GetBirthMonth(tree, "Joe");
-            result.ShouldEqual("January");
+
+            var result = new Solution().GetBirthMonth(Ted, "Joe");
+            Assert.Equal(result, "January");
         }
            
         [Theory]
@@ -20,7 +21,7 @@ namespace CodingChallenge.FamilyTree.Tests
         {
             var tree = FamilyTreeGenerator.Make();
             var result = new Solution().GetBirthMonth(tree, "Ted");
-            result.ShouldEqual("May");
+            Assert.Equal(result, "May");
         }
 
         [Theory]
@@ -28,7 +29,7 @@ namespace CodingChallenge.FamilyTree.Tests
         {
             var tree = FamilyTreeGenerator.Make();
             var result = new Solution().GetBirthMonth(tree, "Jeebus");
-            result.ShouldEqual("");
+            Assert.Equal(result, "");
         }
     }
 }
