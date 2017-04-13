@@ -22,10 +22,13 @@ namespace CodingChallenge.PirateSpeak
         public string[] GetPossibleWords(string jumble, string[] dictionary)
         {
             var matches = new List<string>();
-
+            var orderedJumble = String.Concat(jumble.OrderBy(c => c));
+         
             foreach (var word in dictionary) 
             {
-                if (word.OrderBy(c => c) == jumble.OrderBy(c => c)) //sort jumbled and sort dictionary word then compare
+                var orderedWord = String.Concat(word.OrderBy(c => c));
+
+                if (orderedWord == orderedJumble)) //sort jumbled and sort dictionary word then compare
                 {
                     matches.Add(word);
                 }

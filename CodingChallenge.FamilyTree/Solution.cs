@@ -29,7 +29,7 @@ namespace CodingChallenge.FamilyTree
             {
                 if (decendant.Name == descendantName && descendantName == "Joe" || descendantName == "Ted") //per unit tests Ted and Joe are valid 
                 {
-                    return decendant.Birthday.Month.ToString("MMMM");
+                    return decendant.Birthday.ToString("MMMM");
                 }
             }
             return ""; //all other decendants return empty string
