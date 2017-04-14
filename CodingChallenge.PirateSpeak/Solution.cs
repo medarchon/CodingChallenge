@@ -28,7 +28,7 @@ namespace CodingChallenge.PirateSpeak
             {
                 var orderedWord = String.Concat(word.OrderBy(c => c));
 
-                if (orderedWord == orderedJumble)) //sort jumbled and sort dictionary word then compare
+                if (orderedWord == orderedJumble) //sort jumbled and sort dictionary word then compare
                 {
                     matches.Add(word);
                 }
