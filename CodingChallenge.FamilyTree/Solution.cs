@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 //Context
 
 //	- You are given a family tree.
@@ -25,14 +26,33 @@ namespace CodingChallenge.FamilyTree
     {
         public string GetBirthMonth(Person person, string descendantName)
         {
-            foreach (var decendant in person.Descendants)
+            //call recursive helper method to walk the tree
+            var descendant = GetDescendantSeeker(person, descendantName);
+
+            return descendant?.Birthday.ToString("MMMM") ?? string.Empty;
+        }
+        
+        //recursive method to search the tree for decendantName
+        private Person GetDescendantSeeker(Person person, string descendantName)
+        {
+            Console.WriteLine(person.Name);
+
+            if (person.Name == descendantName)
             {
-                if (decendant.Name == descendantName && descendantName == "Joe" || descendantName == "Ted") //per unit tests Ted and Joe are valid 
+                return person;
+            }
+
+            foreach (var d in person.Descendants)
+            {
+                var result = GetDescendantSeeker(d, descendantName);
+
+                if (result != null)
                 {
-                    return decendant.Birthday.ToString("MMMM");
+                    return result;
                 }
             }
-            return ""; //all other decendants return empty string
+
+            return null;
         }
     }
 }
