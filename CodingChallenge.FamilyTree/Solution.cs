@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 //Context
 
@@ -28,31 +29,15 @@ namespace CodingChallenge.FamilyTree
         {
             //call recursive helper method to walk the tree
             var descendant = GetDescendantSeeker(person, descendantName);
-
+            
+            //return date for found decendant
             return descendant?.Birthday.ToString("MMMM") ?? string.Empty;
         }
         
         //recursive method to search the tree for decendantName
         private Person GetDescendantSeeker(Person person, string descendantName)
         {
-            Console.WriteLine(person.Name);
-
-            if (person.Name == descendantName)
-            {
-                return person;
-            }
-
-            foreach (var d in person.Descendants)
-            {
-                var result = GetDescendantSeeker(d, descendantName);
-
-                if (result != null)
-                {
-                    return result;
-                }
-            }
-
-            return null;
+            return person.Name == descendantName ? person : person.Descendants.Select(d => GetDescendantSeeker(d, descendantName)).FirstOrDefault(result => result != null);
         }
     }
 }

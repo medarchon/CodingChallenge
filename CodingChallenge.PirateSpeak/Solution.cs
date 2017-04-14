@@ -21,20 +21,9 @@ namespace CodingChallenge.PirateSpeak
     {
         public string[] GetPossibleWords(string jumble, string[] dictionary)
         {
-            var matches = new List<string>();
             var orderedJumble = String.Concat(jumble.OrderBy(c => c));
-         
-            foreach (var word in dictionary) 
-            {
-                var orderedWord = String.Concat(word.OrderBy(c => c));
 
-                if (orderedWord == orderedJumble) //sort jumbled and sort dictionary word then compare
-                {
-                    matches.Add(word);
-                }
-            }
-
-            return matches.ToArray(); //convert list to array
+            return (from word in dictionary let orderedWord = String.Concat(word.OrderBy(c => c)) where orderedWord == orderedJumble select word).ToArray(); //convert list to array
         }
 
     }
