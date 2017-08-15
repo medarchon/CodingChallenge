@@ -71,12 +71,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CodingChallenge.PirateSpeak\CodingChallenge.PirateSpeak.csproj">
-      <Project>{467D3021-CBF9-4383-8886-72520FC0F274}</Project>
-      <Name>CodingChallenge.PirateSpeak</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
