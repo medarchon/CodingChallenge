@@ -33,16 +33,15 @@ namespace CodingChallenge.PirateSpeak
 
 function setUp (jumble, dictionary){
     let letters = jumble.ToLower().split('');  //set up array of letters from user entry
-    let n = letters.length; // determine length of array for future loops
 
     function firstScramble (letters, n){
-        let stop = false;
+        let n = letters.length; // determine length of array
         let mixletters = [];     // temp storage for each scramble, to be cleared each time
         let firstmix = [];   // firstRun results
         let finalmixes = [];  //  all final possible scrambles
         while (n!=0){
             function firstRun (letters, n){
-                for (let i = 0; i < n; i++)
+                for (let i = 0; i < letters.length; i++)
                 {
                     mixletters.push(i);    // create scramble
                 }
@@ -50,32 +49,39 @@ function setUp (jumble, dictionary){
                 firstmix.push(mixword);  // add scramble to results array
                 finalmixes.push(mixword); //add scramble to final results
                 let mixletters = [];   // clear temp storage
+                let n = n-1;   //reduce counter
+                let popped = letters.pop();  //remove last index
+                let reworked = letters.splice(0,0,popped);    //add last index to first spot
+                firstRun(reworked, n);
             };
-            let n = n-1;   //reduce counter
-            let popped = letters.pop();  //remove last index
-            let reworked = letters.splice(0,0,popped);    //add last index to first spot
-            firstRun(reworked, n);
-        }
+        };
         secondUnscramble(firstmix);
     }
 
     function secondScramble (words){   // function to take firstmix and create more scrambled options
-        let n = letters.length;
         foreach (var word in words)
         {
             let splitWord = word.split('');
             let spliced = splitWord.splice(1,1);  //swap around first two indexes
             let reworked = splitWord.splice(0,0,spliced);
-            for (let i = 0; i < reworked.length; i++)  //run through same process as function firstRun
-                {
-                    mixletters.push(i);    // create scramble
-                }
-                let mixword = mixletters.join(',');  //join letters together into one scramble
-                firstmix.push(mixword);  // add scramble to results array
-                finalmixes.push(mixword); //add scramble to final results
-                let mixletters = [];   // clear temp storage
-
-        }
+            let n = splitWord.length;
+            while (n!=0){                   // run reworked word through same firstScramble process
+                function firstRun (letters, n){
+                    for (let i = 0; i < letters.length; i++)
+                    {
+                        mixletters.push(i);    // create scramble
+                    }
+                    let mixword = mixletters.join(',');  //join letters together into one scramble
+                    firstmix.push(mixword);  // add scramble to results array
+                    finalmixes.push(mixword); //add scramble to final results
+                    let mixletters = [];   // clear temp storage
+                    let n = n-1;   //reduce counter
+                    let popped = letters.pop();  //remove last index
+                    let reworked = letters.splice(0,0,popped);    //add last index to first spot
+                    firstRun(reworked, n);
+                };
+            };
+        };
         compareWords(finalmixes);
     }
 
