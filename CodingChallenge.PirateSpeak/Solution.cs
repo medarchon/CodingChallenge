@@ -11,7 +11,7 @@ namespace CodingChallenge.PirateSpeak
             // throw new NotImplementedException();
         }
     }
-}
+};
 
 
 // split letters into indexes of array
@@ -35,7 +35,7 @@ function setUp (jumble, dictionary){
     let letters = jumble.ToLower().split('');  //set up array of letters from user entry
     let n = letters.length; // determine length of array for future loops
 
-    function Unscramble (letters, n){
+    function firstScramble (letters, n){
         let stop = false;
         let mixletters = [];     // temp storage for each scramble, to be cleared each time
         let firstmix = [];   // firstRun results
@@ -48,12 +48,39 @@ function setUp (jumble, dictionary){
                 }
                 let mixword = mixletters.join(',');  //join letters together into one scramble
                 firstmix.push(mixword);  // add scramble to results array
+                finalmixes.push(mixword); //add scramble to final results
                 let mixletters = [];   // clear temp storage
             };
             let n = n-1;   //reduce counter
             let popped = letters.pop();  //remove last index
-            let reworked = letters.splice(1,0,popped);    //add last index to second spot
+            let reworked = letters.splice(0,0,popped);    //add last index to first spot
             firstRun(reworked, n);
         }
+        secondUnscramble(firstmix);
     }
+
+    function secondScramble (words){   // function to take firstmix and create more scrambled options
+        let n = letters.length;
+        foreach (var word in words)
+        {
+            let splitWord = word.split('');
+            let spliced = splitWord.splice(1,1);  //swap around first two indexes
+            let reworked = splitWord.splice(0,0,spliced);
+            for (let i = 0; i < reworked.length; i++)  //run through same process as function firstRun
+                {
+                    mixletters.push(i);    // create scramble
+                }
+                let mixword = mixletters.join(',');  //join letters together into one scramble
+                firstmix.push(mixword);  // add scramble to results array
+                finalmixes.push(mixword); //add scramble to final results
+                let mixletters = [];   // clear temp storage
+
+        }
+        compareWords(finalmixes);
+    }
+
+    function compareWords(scrambled, dictionary){
+
+    }
+
 }
