@@ -38,34 +38,38 @@ function setUp (jumble, dictionary){
         let mixletters = [];     // temp storage for each scramble, to be cleared each time
         let firstMix = [];   // firstRun results
         let finalMix = [];  //  all final possible scrambles
-        function firstRun (letters, n){
+        let k = Math.pow(letters.length, 2) + 1;
+        function mainRun (letters){
             let n = letters.length; // determine length of array
             if (n!=0){
-                for (let i = 0; i < letters.length; i++)
-                {
-                    mixletters.push(i);    // create scramble
+                function firstRun (letters){               // rotate order of letters and push to array
+                    for (let i = 0; i < letters.length; i++)
+                    {
+                        mixletters.push(i);    // create scramble
+                    }
+                    let mixWord = mixletters.join(',');  //join letters together into one scramble
+                    firstMix.push(mixWord);  // add scramble to results array
+                    finalMix.push(mixWord); //add scramble to final results
+                    mixletters = [];   // clear temp storage
+                    n = n-1;   //reduce counter
+                    k= k-1
+                    let popped = letters.pop();  //remove last index
+                    let reworked = letters.splice(0,0,popped);    //add last index to first spot
+                    firstRun(reworked);
                 }
-                let mixWord = mixletters.join(',');  //join letters together into one scramble
-                firstMix.push(mixWord);  // add scramble to results array
-                finalMix.push(mixWord); //add scramble to final results
-                mixletters = [];   // clear temp storage
-                n = n-1;   //reduce counter
-                let popped = letters.pop();  //remove last index
-                let reworked = letters.splice(0,0,popped);    //add last index to first spot
-                firstRun(reworked, n);
             };
             else {
-                secondRun(letters)
+                break;
         }
 
-        function secondRun (letters){
-            let n = letters.length;
+        function secondRun (newLetters){
+            let n = newLetters.length;
             if (n!=0){
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < n; i++)
                 {
-                    let spliced = letters.splice((n-i),1);
-                    let reworked =
-
+                    let spliced = newLetters.splice((n-(i+1)),1);
+                    let reworked = newLetters.splice(0,0,spliced);
+                    mainRun(reworked);
                 }
             }
         };
@@ -80,7 +84,7 @@ function setUp (jumble, dictionary){
             let spliced = splitWord.splice(1,1);  //swap around first two indexes
             let reworked = splitWord.splice(0,0,spliced);
             let n = splitWord.length;
-            function firstRun (letters, n){
+            function mainRun (letters, n){
                 while (n!=0){                   // run reworked word through same firstUnscramble process
                     for (let i = 0; i < letters.length; i++)
                     {
@@ -93,7 +97,7 @@ function setUp (jumble, dictionary){
                     n = n-1;   //reduce counter
                     let popped = letters.pop();  //remove last index
                     let reworked = letters.splice(0,0,popped);    //add last index to first spot
-                    firstRun(reworked, n);
+                    mainRun(reworked, n);
                 };
             };
         };
