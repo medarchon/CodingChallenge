@@ -43,46 +43,50 @@ function setUp (jumble, dictionary){
 }
 
 
-function firstUnscramble(letters) {
+function firstUnscramble(jumble) {
+  let letters = jumble.toLowerCase().split("");
+  console.log("firstjumble", letters);
   let mixletters = []; // temp storage for each scramble, to be cleared each time
   let firstMix = []; // firstRun results
   let finalMix = []; //  all final possible scrambles
-  let k = Math.pow(letters.length, 2) + 1;
+  let k = 1;
+  for (let i = 1; i < letters.length + 1; i++){
+    k = k * i;
+    console.log("k", k);
+  }
   console.log("k", k);
   let n = letters.length; // determine length of array
   console.log("n", n);
 
+  var firstRun = function(word) {
+    // console.log("okay", word);
+    let letters = word.split("");
+    let l = letters.length;
+    console.log("word", letters);
+    console.log("k", k);
+    if (k !== 0) {
+      // rotate order of letters and push to array
+      for (let i = 0; i < letters.length; i++) {
+        mixletters.push(letters[i]);
+      } // create scramble
 
-  var firstRun = function(word){
-    console.log("okay", word);
-    let letters = word.split('');
-        let l = letters.length;
-        console.log("word", letters);
-        console.log("l", l);
-        if (k !== 0) {
-          // rotate order of letters and push to array
-          for (let i = 0; i < letters.length; i++) {
-            mixletters.push(letters[i]);
-          } // create scramble
-
-          let mixWord = mixletters.join(""); //join letters together into one scramble
-          console.log("mixletters", mixletters);
-          // firstMix.push(mixWord); // add scramble to results array
-          console.log("first", firstMix);
-          finalMix.push(mixWord); //add scramble to final results
-          console.log("final", finalMix);
-          k = k - 1;
-          mixletters = []; // clear temp storage
-          l = l - 1; //reduce counter
-          console.log("l2", l);
-          console.log("letters", letters);
-          let popped2 = letters.pop(); //remove last index
-          console.log("pop", popped2);
-          let reworked2 = letters.splice(0, 0, popped2); //add last index to first spot
-          mixWord = letters.join("");
-          console.log("reworked", mixWord);
-          firstRun(mixWord);
-
+      let mixWord = mixletters.join(""); //join letters together into one scramble
+      console.log("mixletters", mixletters);
+      // firstMix.push(mixWord); // add scramble to results array
+      console.log("first", firstMix);
+      finalMix.push(mixWord); //add scramble to final results
+      console.log("final", finalMix);
+      k = k - 1;
+      mixletters = []; // clear temp storage
+      l = l - 1; //reduce counter
+      console.log("l2", l);
+      console.log("letters", letters);
+      let popped2 = letters.pop(); //remove last index
+      console.log("pop", popped2);
+      let reworked2 = letters.splice(0, 0, popped2); //add last index to first spot
+      mixWord = letters.join("");
+      console.log("reworked", mixWord);
+      firstRun(mixWord);
     } else {
       console.log("done");
       console.log("finalMix", finalMix);
@@ -111,19 +115,14 @@ function firstUnscramble(letters) {
       console.log("firstMix", firstMix);
     } else {
       console.log("first wave done");
-      // firstRun()
       const run1 = firstMix.length;
       console.log("run1", run1);
-      for(let i = 0; i < run1; i++){
-        console.log("mixfirst", firstMix[i])
-        firstRun(firstMix[i]);
+      for (let i = 0; i < run1; i++) {
+        console.log("mixfirst", firstMix[i]);
+        // firstRun(firstMix[i]);
       }
     }
-
-    }
   }
+}
 
-
-
-
-firstUnscramble(["1", "2", "3", "4"]);
+firstUnscramble("1234");
